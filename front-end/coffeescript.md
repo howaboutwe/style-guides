@@ -5,7 +5,6 @@
     * [Whitespace in Expressions and Statements](#whitespace)
     * [Comments](#comments)
         * [Block Comments](#block_comments)
-        * [Inline Comments](#inline_comments)
     * [Naming Conventions](#naming_conventions)
     * [Functions](#functions)
     * [Strings](#strings)
@@ -110,29 +109,6 @@ Paragraphs inside of block comments are separated by a line containing a single 
   init()
   start()
   stop()
-```
-
-<a name="inline_comments"/>
-### Inline Comments
-
-Inline comments are placed on the line immediately above the statement that they are describing. If the inline comment is sufficiently short, it can be placed on the same line as the statement (separated by a single space from the end of the statement).
-
-All inline comments should start with a `#` and a single space.
-
-The use of inline comments should be limited, because their existence is typically a sign of a code smell.
-
-Do not use inline comments when they state the obvious:
-
-```coffeescript
-  # No
-  x = x + 1 # Increment x
-```
-
-However, inline comments can be useful in certain scenarios:
-
-```coffeescript
-  # Yes
-  x = x + 1 # Compensate for border
 ```
 
 <a name="naming_conventions"/>
@@ -326,14 +302,6 @@ The annotation keyword should be followed by a colon and a space, and a descript
   # FIXME: The client's current state should *not* affect payload processing.
   resetClientState()
   processPayload()
-```
-
-If multiple lines are required by the description, indent subsequent lines with two spaces:
-
-```coffeescript
-  # TODO: Ensure that the value returned by this call falls within a certain
-  #   range, or throw an exception.
-  analyze()
 ```
 
 Annotation types:
