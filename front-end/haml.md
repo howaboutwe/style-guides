@@ -5,6 +5,7 @@
 1. [Basic Conventions](#basic-conventions)
   1. [Whitespace](#whitespace)
   1. [Escapement](#escapement)
+  1. [Semantics](#semantics)
 1. [Naming Conventions](#naming-conventions)
 1. [Rails Helpers](#rails-helpers)
 1. [Interpolation](#interpolation)
@@ -111,6 +112,50 @@
     Hello & Goodbye!
     ```
 
+
+### <a name='semantics'>Semantics</a>
+
+  - Use descriptive element names when possible:
+
+    ```haml
+    -# Good
+    %ul
+      %li
+        / Content...
+
+    -# Bad
+    .list
+      .list-item
+        / Content...
+    ```
+
+  - Apply `%span`s to inline elements:
+
+    ```haml
+    -# Good
+    %p
+      %span.icon-category
+      Foo bar
+
+    -# Bad
+    %p
+      .icon-category
+      Foo bar
+    ```
+
+  - Apply `%span`s to inline elements:
+
+    ```haml
+    -# Good
+    %p
+      %span.icon-category
+      Foo bar
+
+    -# Bad
+    %p
+      .icon-category
+      Foo bar
+    ```
 
 ## <a name='naming-conventions'>Naming Conventions</a>
 
