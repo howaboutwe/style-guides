@@ -3,6 +3,8 @@
 ## <a name='TOC'>Table of Contents</a>
 
 1. [Basic Conventions](#basic-conventions)
+  1. [Whitespace](#whitespace)
+  1. [Escapement](#escapement)
 1. [Naming Conventions](#naming-conventions)
 1. [Rails Helpers](#rails-helpers)
 1. [Interpolation](#interpolation)
@@ -18,6 +20,11 @@
   - Use double quotes (`class: "hello"`) over single.
 
   - Soft limit to 80 character line lengths. A little over is _okay_, but avoid anything longer than 100 characters.
+
+  - Inline styles are "never" appropriate, _except_ when applying
+    `{ style: "display: none;" }` or `{ style: "visibility: hidden;" }`.
+
+  - Inline JavaScript is _never_ appropriate.
 
   - Use `key: value` syntax for attributes when possible. Only use
     hashrocket syntax when you must quote a key. Avoid invalid key
@@ -36,6 +43,9 @@
     -# Bad
     %li{ :$monies => "Why did I do this?!" }
     ```
+
+
+### <a name='whitespace'>Whitespace</a>
 
   - Internally pad your curly braces with an additional space at the
     start and end:
@@ -72,6 +82,9 @@
     %h2= modal.header.title
     ```
 
+
+### <a name'escapement'>Escapement</a>
+
   - Escape self-closing tags:
 
     ```haml
@@ -85,10 +98,18 @@
     %br
     ```
 
-  - Inline styles are "never" appropriate, _except_ when applying
-    `{ style: "display: none;" }` or `{ style: "visibility: hidden;" }`.
+  - Use entity escapements when appropriate:
 
-  - Inline JavaScript is _never_ appropriate.
+    ```haml
+    -# Good
+    Hello &amp; Goodbye!
+
+    -# Good
+    = link_to "Truncated", "#", title: "Long string that trunca&hellip;".html_safe
+
+    -# Bad
+    Hello & Goodbye!
+    ```
 
 
 ## <a name='naming-conventions'>Naming Conventions</a>
