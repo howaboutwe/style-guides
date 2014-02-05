@@ -262,6 +262,8 @@
     %form{ anything: "you already failed" }
     ```
 
+  - Aways apply labels to form inputs, radios, and checkboxes.
+
   - Always use Rails' built in `remote: true` option for links, forms, or buttons
     that trigger AJAX requests.
 
@@ -279,8 +281,7 @@
 
 ## <a name='content-for-blocks'>Content For Blocks</a>
 
-  - Place `- content_for` blocks at the head of a file. The only exception is if
-    the block is a child of a parent block, which must be further down a page.
+  - Place `content_for` blocks at the head of a file or parent block.
 
   - Always put `:javascript`, `:coffeescript`, or `:css` blocks in an appropriate
     `content_for` block. Eg- `- content_for :head` for CSS or `- content_for :footer`
