@@ -28,12 +28,37 @@
 
     ```haml
     -# Good
-    = link_to foo, bar, data:
-      { foo: bar, biz: baz, fiz: buzz }
+    = link_to "foo", bar, attributes: "pushing to 80 chars", data:
+      {foo: "bar", biz: "baz", fiz: "buzz"}
 
     -# Bad
-    = link_to foo, bar, data: { foo: bar,
-      biz: baz, fiz: buzz }
+    = link_to "foo", bar, attributes: "pushing to 80 chars", data: {foo: "bar",
+      biz: "baz", fiz: "buzz"}
+    ```
+
+  - Indent code breaks with two spaces:
+
+    ```haml
+    -# Good
+    = link_to "FAQ", url,
+      class: "blue"
+
+    -# Good
+    = link_to url,
+      class: "blue" do
+      Contact Us
+
+    -# Okay
+    = button_tag "Submit", type: "submit", data:
+      {foo: "bar",
+      bam: "boom"}
+
+    -# Bad
+    = link_to "foo", bar, data:
+      {foo: "bar",
+        biz: "baz",
+        fiz: "buzz"}
+      Terms and Condtions
     ```
 
   - Inline styles are **never** appropriate.
@@ -46,16 +71,16 @@
 
     ```haml
     -# Good
-    %li{ data: { foo: "bar" } }
+    %li{data: {foo: "bar"}}
 
     -# Okay
-    %li{ data: { :"street-address" => "1234" } }
+    %li{data: {:"street-address" => "1234"}}
 
     -# Bad
-    %li{ data: { :foo => "bar" } }
+    %li{data: {:foo => "bar"}}
 
     -# Bad
-    %li{ :$monies => "Why did I do this?!" }
+    %li{:$monies => "Why did I do this?!"}
     ```
 
 
@@ -65,19 +90,16 @@
 
     ```haml
     -# Good
-    %span.category-icon{class: "icon-#{item.category.name}"}
+    %span{class: "icon-#{item.category.name}"}
 
     -# Good
-    %li.media-card{class: "foo", data: {foo: "icon-#{item.category.name}"}}
+    %li{class: "foo", data: {foo: "icon-#{item.category.name}"}}
 
     -# Bad
-    %li.media-card{data:{foo:"bar"}}
-
-    -# Bad
-    %span.category-icon{ class: "icon-#{ item.category.name }" }
+    %li{data:{foo:"bar",biz:"baz"}}
     ```
 
-  - Place content on a new line after tags:
+  - Place content on a new line after its parent element:
 
     ```haml
     -# Good
@@ -105,7 +127,7 @@
     %br/
 
     -# Good
-    %meta{ charset: "utf-8" }/
+    %meta{charset: "utf-8"}/
 
     -# Bad
     %br
@@ -210,6 +232,28 @@
       .i-reuse-this-all-the-time#but-never-more-than-once
       ```
 
+  - Provide content semantic classnames when possible. These are particularly
+    useful for providing selectors to our test suite.
+
+    ```haml
+    -# Good
+    %dl.media-meta
+      %dt.user-login
+        = user.login
+      %dt.user-meta
+        = quick_meta(user)
+      %dd.user-location
+        = user.location
+
+    -# Bad
+    %dl
+      %dt
+        = user.login
+      %dt
+        = quick_meta(user)
+      %dd
+        = user.location
+    ```
 
 
 ## <a name='rails-helpers'>Rails Helpers</a>
@@ -227,11 +271,11 @@
     = button_tag "Submit", type: "submit"
 
     -# Bad
-    %a{ href: some_url_path }
+    %a{href: some_url_path}
       Hello!
 
     -# Bad
-    %form{ action: "foo", method: "post" }
+    %form{action: "foo", method: "post"}
     ```
 
   - Use blocks if you need to wrap an element in another element:
@@ -253,7 +297,7 @@
 
     ```haml
     -# Good
-    Contact us via #{ link_to "Email", email.address } if you need further support.
+    Contact us via #{link_to "Email", email.address} if you need further support.
 
     -# Bad
     Contact us via
@@ -280,7 +324,7 @@
     = form_tag "/api-endpoint", remote: true do
 
     -# Bad
-    %form{ anything: "you already failed" }
+    %form{anything: "you already failed"}
     ```
 
   - Aways apply labels to form inputs, radios, and checkboxes.
@@ -293,10 +337,10 @@
     = link_to "Favorite", api_favorites_path, remote: true do
 
     -# Good
-    = button_tag "Open Modal", data: { resource: api_endpoint_path }, remote: true
+    = button_tag "Open Modal", data: {resource: api_endpoint_path}, remote: true
 
     -# Bad
-    = button_tag "Open Modal", data: { resource: api_endpoint_path }
+    = button_tag "Open Modal", data: {resource: api_endpoint_path}
     ```
 
 
