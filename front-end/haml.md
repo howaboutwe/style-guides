@@ -24,10 +24,21 @@
 
   - Soft limit to 80 character line lengths. A little over is _okay_, but avoid anything longer than 100 characters.
 
-  - Inline styles are "never" appropriate, _except_ when applying
-    `{ style: "display: none;" }` or `{ style: "visibility: hidden;" }`.
+  - Line break for readability:
 
-  - Inline JavaScript is _never_ appropriate.
+    ```haml
+    -# Good
+    = link_to foo, bar, data:
+      { foo: bar, biz: baz, fiz: buzz }
+
+    -# Bad
+    = link_to foo, bar, data: { foo: bar,
+      biz: baz, fiz: buzz }
+    ```
+
+  - Inline styles are **never** appropriate.
+
+  - Inline JavaScript is **never** appropriate.
 
   - Use `key: value` syntax for attributes when possible. Only use
     hashrocket syntax when you must quote a key. Avoid invalid key
@@ -50,21 +61,20 @@
 
 ### <a name='whitespace'>Whitespace</a>
 
-  - Internally pad your curly braces with an additional space at the
-    start and end:
+  - Put one whitespace character after delimiters (eg- `:` or `,`):
 
     ```haml
     -# Good
-    %li.media-card{ data: { foo: "bar" } }
+    %span.category-icon{class: "icon-#{item.category.name}"}
 
     -# Good
-    %span.category-icon{ class: "icon-#{ item.category.name }" }
+    %li.media-card{class: "foo", data: {foo: "icon-#{item.category.name}"}}
 
     -# Bad
     %li.media-card{data:{foo:"bar"}}
 
     -# Bad
-    %span.category-icon{ class: "icon-#{item.category.name}" }
+    %span.category-icon{ class: "icon-#{ item.category.name }" }
     ```
 
   - Place content on a new line after tags:
@@ -190,6 +200,17 @@
         I'm the right rail!
       ```
 
+    - Apply IDs before classes on elements.
+
+      ```haml
+      -# Good
+      #im-one-of-a-kind.but-a-lot-like-others
+
+      -# Bad
+      .i-reuse-this-all-the-time#but-never-more-than-once
+      ```
+
+
 
 ## <a name='rails-helpers'>Rails Helpers</a>
 
@@ -290,10 +311,14 @@
 
 ## <a name='scripting-hooks'>Scripting Hooks</a>
 
-  - Never apply JavaScript to a style-oriented classname. Create a new
-    classname that is free of styles for binding functionality.
+  - Please use `[data-trigger]` attributes as hooks whenever possible.
 
-  - Feel free to use `[data-*]` attributes as hooks.
+  - Never apply JavaScript to a style-oriented selector. Add a data
+    attribute or classname that is free of styles for binding functionality.
+
+  - If you use a class, prepend your classname with `.trigger-`.
+
+  - TBD: Add common `[data-*]` hook descriptions. Eg- `[data-resource]`.
 
 ## <a name='progressive-enhancement'>Progressive Enhancement</a>
 
