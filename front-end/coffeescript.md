@@ -1,32 +1,6 @@
 # CoffeeScript Style Guide
 
-This guide presents a collection of best-practices and coding conventions for the [CoffeeScript][coffeescript] programming language.
-
-This guide is intended to be community-driven, and contributions are highly encouraged.
-
-Please note that this is a work-in-progress: there is much more that can be specified, and some of the guidelines that have been specified may not be deemed to be idiomatic by the community (in which case, these offending guidelines will be modified or removed, as appropriate).
-
-## Inspiration
-
-The details in this guide have been very heavily inspired by several existing style guides and other resources. In particular:
-
-- [PEP-8][pep8]: Style Guide for Python Code
-- Bozhidar Batsov's [Ruby Style Guide][ruby-style-guide]
-- [Google's JavaScript Style Guide][google-js-styleguide]
-- [Common CoffeeScript Idioms][common-coffeescript-idioms]
-- Thomas Reynolds' [CoffeeScript-specific Style Guide][coffeescript-specific-style-guide]
-- Jeremy Ashkenas' [code review][spine-js-code-review] of [Spine][spine-js]
-- The [CoffeeScript FAQ][coffeescript-faq]
-
-## Table of Contents
-
 * [The CoffeeScript Style Guide](#guide)
-    * [Code Layout](#code_layout)
-        * [Tabs or Spaces?](#tabs_or_spaces)
-        * [Maximum Line Length](#maximum_line_length)
-        * [Blank Lines](#blank_lines)
-        * [Trailing Whitespace](#trailing_whitespace)
-        * [Encoding](#encoding)
     * [Module Imports](#module_imports)
     * [Whitespace in Expressions and Statements](#whitespace)
     * [Comments](#comments)
@@ -41,38 +15,6 @@ The details in this guide have been very heavily inspired by several existing st
     * [Exceptions](#exceptions)
     * [Annotations](#annotations)
     * [Miscellaneous](#miscellaneous)
-
-<a name="code_layout"/>
-## Code layout
-
-<a name="tabs_or_spaces"/>
-### Tabs or Spaces?
-
-Use **spaces only**, with **2 spaces** per indentation level. Never mix tabs and spaces.
-
-<a name="maximum_line_length"/>
-### Maximum Line Length
-
-Limit all lines to a maximum of 79 characters.
-
-<a name="blank_lines"/>
-### Blank Lines
-
-Separate top-level function and class definitions with a single blank line.
-
-Separate method definitions inside of a class with a single blank line.
-
-Use a single blank line within the bodies of methods or functions in cases where this improves readability (e.g., for the purpose of delineating logical sections).
-
-<a name="trailing_whitespace"/>
-### Trailing Whitespace
-
-Do not include trailing whitespace on any lines.
-
-<a name="encoding"/>
-### Encoding
-
-UTF-8 is the preferred source file encoding.
 
 <a name="module_imports"/>
 ## Module Imports
