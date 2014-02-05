@@ -12,6 +12,8 @@
 1. [Forms & AJAX](#forms-ajax)
 1. [Content For Blocks](#content-for-blocks)
 1. [Scripting Hooks](#scripting-hooks)
+1. [Progressive Enhancement](#progressive-enhancement)
+1. [Accessibility](#accessibility)
 
 
 ## <a name='basic-conventions'>Basic Conventions</a>
@@ -143,20 +145,6 @@
       Foo bar
     ```
 
-  - Apply `%span`s to inline elements:
-
-    ```haml
-    -# Good
-    %p
-      %span.icon-category
-      Foo bar
-
-    -# Bad
-    %p
-      .icon-category
-      Foo bar
-    ```
-
 ## <a name='naming-conventions'>Naming Conventions</a>
 
   - IDs and Classes should use _lower_ `dash-case-for-names`.
@@ -268,7 +256,7 @@
     = form_tag api_endpoint_path, remote: true do
 
     -# Bad
-    = form_for "/api-endpoint", remote: true do
+    = form_tag "/api-endpoint", remote: true do
 
     -# Bad
     %form{ anything: "you already failed" }
@@ -306,3 +294,10 @@
 
   - Feel free to use `[data-*]` attributes as hooks.
 
+## <a name='progressive-enhancement'>Progressive Enhancement</a>
+
+  - TBD
+
+## <a name='accessibility'>Accessibility</a>
+
+  - TBD
