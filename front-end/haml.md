@@ -54,10 +54,10 @@
       bam: "boom"}
 
     -# Bad
-    = link_to "foo", bar, data:
+    = link_to bar, data:
       {foo: "bar",
         biz: "baz",
-        fiz: "buzz"}
+        fiz: "buzz"} do
       Terms and Condtions
     ```
 

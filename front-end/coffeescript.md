@@ -1,37 +1,10 @@
 # CoffeeScript Style Guide
 
-This guide presents a collection of best-practices and coding conventions for the [CoffeeScript][coffeescript] programming language.
-
-This guide is intended to be community-driven, and contributions are highly encouraged.
-
-Please note that this is a work-in-progress: there is much more that can be specified, and some of the guidelines that have been specified may not be deemed to be idiomatic by the community (in which case, these offending guidelines will be modified or removed, as appropriate).
-
-## Inspiration
-
-The details in this guide have been very heavily inspired by several existing style guides and other resources. In particular:
-
-- [PEP-8][pep8]: Style Guide for Python Code
-- Bozhidar Batsov's [Ruby Style Guide][ruby-style-guide]
-- [Google's JavaScript Style Guide][google-js-styleguide]
-- [Common CoffeeScript Idioms][common-coffeescript-idioms]
-- Thomas Reynolds' [CoffeeScript-specific Style Guide][coffeescript-specific-style-guide]
-- Jeremy Ashkenas' [code review][spine-js-code-review] of [Spine][spine-js]
-- The [CoffeeScript FAQ][coffeescript-faq]
-
-## Table of Contents
-
 * [The CoffeeScript Style Guide](#guide)
-    * [Code Layout](#code_layout)
-        * [Tabs or Spaces?](#tabs_or_spaces)
-        * [Maximum Line Length](#maximum_line_length)
-        * [Blank Lines](#blank_lines)
-        * [Trailing Whitespace](#trailing_whitespace)
-        * [Encoding](#encoding)
     * [Module Imports](#module_imports)
     * [Whitespace in Expressions and Statements](#whitespace)
     * [Comments](#comments)
         * [Block Comments](#block_comments)
-        * [Inline Comments](#inline_comments)
     * [Naming Conventions](#naming_conventions)
     * [Functions](#functions)
     * [Strings](#strings)
@@ -41,38 +14,6 @@ The details in this guide have been very heavily inspired by several existing st
     * [Exceptions](#exceptions)
     * [Annotations](#annotations)
     * [Miscellaneous](#miscellaneous)
-
-<a name="code_layout"/>
-## Code layout
-
-<a name="tabs_or_spaces"/>
-### Tabs or Spaces?
-
-Use **spaces only**, with **2 spaces** per indentation level. Never mix tabs and spaces.
-
-<a name="maximum_line_length"/>
-### Maximum Line Length
-
-Limit all lines to a maximum of 79 characters.
-
-<a name="blank_lines"/>
-### Blank Lines
-
-Separate top-level function and class definitions with a single blank line.
-
-Separate method definitions inside of a class with a single blank line.
-
-Use a single blank line within the bodies of methods or functions in cases where this improves readability (e.g., for the purpose of delineating logical sections).
-
-<a name="trailing_whitespace"/>
-### Trailing Whitespace
-
-Do not include trailing whitespace on any lines.
-
-<a name="encoding"/>
-### Encoding
-
-UTF-8 is the preferred source file encoding.
 
 <a name="module_imports"/>
 ## Module Imports
@@ -168,29 +109,6 @@ Paragraphs inside of block comments are separated by a line containing a single 
   init()
   start()
   stop()
-```
-
-<a name="inline_comments"/>
-### Inline Comments
-
-Inline comments are placed on the line immediately above the statement that they are describing. If the inline comment is sufficiently short, it can be placed on the same line as the statement (separated by a single space from the end of the statement).
-
-All inline comments should start with a `#` and a single space.
-
-The use of inline comments should be limited, because their existence is typically a sign of a code smell.
-
-Do not use inline comments when they state the obvious:
-
-```coffeescript
-  # No
-  x = x + 1 # Increment x
-```
-
-However, inline comments can be useful in certain scenarios:
-
-```coffeescript
-  # Yes
-  x = x + 1 # Compensate for border
 ```
 
 <a name="naming_conventions"/>
@@ -384,14 +302,6 @@ The annotation keyword should be followed by a colon and a space, and a descript
   # FIXME: The client's current state should *not* affect payload processing.
   resetClientState()
   processPayload()
-```
-
-If multiple lines are required by the description, indent subsequent lines with two spaces:
-
-```coffeescript
-  # TODO: Ensure that the value returned by this call falls within a certain
-  #   range, or throw an exception.
-  analyze()
 ```
 
 Annotation types:
