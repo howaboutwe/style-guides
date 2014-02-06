@@ -177,6 +177,40 @@
       Foo bar
     ```
 
+
+### Classes and IDs
+
+  - Apply IDs before classes.
+
+    ```haml
+    -# Good
+    #im-one-of-a-kind.but-a-lot-like-others
+
+    -# Good
+    %article#article-2009-12-17.post
+
+    -# Bad
+    .i-reuse-this-all-the-time#but-never-more-than-once
+    ```
+
+  - Unless you need to interpolate, apply IDs and classes directly on elements
+    rather than as an attribute:
+
+    ```haml
+    -# Good
+    %span.foo-bar
+
+    -# Good
+    %span.foo-bar{class: "icon-category-#{category.name}"}
+
+    -# Bad
+    %span{class: "foo-bar"}
+
+    -# Bad
+    %span{class: "foo-bar icon-category-#{category.name}"}
+    ```
+
+
 ## <a name='naming-conventions'>Naming Conventions</a>
 
   - IDs and Classes should use _lower_ `dash-case-for-names`.
@@ -220,16 +254,6 @@
       -# Bad
       %h2
         I'm the right rail!
-      ```
-
-    - Apply IDs before classes on elements.
-
-      ```haml
-      -# Good
-      #im-one-of-a-kind.but-a-lot-like-others
-
-      -# Bad
-      .i-reuse-this-all-the-time#but-never-more-than-once
       ```
 
   - Provide content semantic classnames when possible. These are particularly
@@ -303,6 +327,16 @@
     Contact us via
     = link_to "Email", email.address
     if you need further support.
+    ```
+
+  - Do not mix interpolated attributes with non-interpolated ones:
+
+    ```haml
+    -# Good
+    %span.foo-bar{class: "icon-category-#{category.name}"}
+
+    -# Bad
+    %span{class: "foo-bar icon-category-#{category.name}"}
     ```
 
 
