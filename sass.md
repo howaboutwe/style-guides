@@ -73,12 +73,12 @@ Rules for where styles should go:
 For example:
 
 ````
-.my_class {
+.my-class {
   @include adjust-font-size-to($medium-font-size);
   @include border-radius(5px);
 
   @extend .container;
-  @extend .some_other_class;
+  @extend .some-other-class;
 
   color: $cyan;
 
@@ -94,10 +94,10 @@ For example:
 
 ## Classes
 
-* All selectors should be snake_case
+* All selectors should be kebab-case
 * Don't use alignment and markup based classes.
   * ex: `.right{ float: right }`
-  * ex: `.patternLight { background: $patternLight }`
+  * ex: `.pattern-light { background: $patternLight }`
   * prefer variables over markup based classes
 * Tend towards verbose class names
 * Prefer adding styles on the class rather than element or id
@@ -111,7 +111,7 @@ In views:
 
 ## Variables
 
-* variables are hypenated-case *(whatever that's called)*
+* variables should be kebab-case
 * Establish a base file for:
   * _sizes.scss with base variables for fonts (font size and line
     height) and grid units (grid, margins, padding)
@@ -131,9 +131,9 @@ In views:
   * for example: `_nav.scss`
 
     ````
-      $nav_height: 50px;
-      nav { height: $nav_height; }
-      #main { margin-top: $nav_height*-1; }
+      $nav-height: 50px;
+      nav { height: $nav-height; }
+      #main { margin-top: $nav-height*-1; }
     ````
       
 
