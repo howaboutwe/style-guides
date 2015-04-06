@@ -85,6 +85,7 @@ You can generate a PDF or an HTML copy of this guide using
 
   # bad
   it "should return true"
+  ```
 
 * Write expectations at a high level, removed from logic and implementation details.
 
@@ -105,6 +106,7 @@ You can generate a PDF or an HTML copy of this guide using
 * Use `describe` for concepts which don't in themselves vary (e.g. "callbacks, validations, <method_name>"). Typically these are nouns.
 
 * Name `describe` blocks as follows:
+
   * use "description" for non-methods
   * use pound "#method" for instance methods
   * use dot ".method" for class methods
@@ -152,6 +154,7 @@ You can generate a PDF or an HTML copy of this guide using
   are likely to represent reality after future refactoring.
 
 * Valid reasons to use stubs/mocks:
+
   * Performance: To prevent running a slow, unrelated task.
   * Determinism: To ensure the test gives the same result each
     time. e.g. Time.now, Kernel#rand, external web services.
@@ -226,6 +229,7 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Mock the models and stub their methods. Testing the controller should not depend on the model creation.
 * Test only the behaviour the controller should be responsible about:
+
   * Execution of particular methods
   * Data returned from the action - assigns, etc.
   * Result from the action - template render, redirect, etc.
@@ -364,6 +368,7 @@ which should be validated. Using `be_valid` does not guarantee that the problem
 ### Mailers
 
 * The mailer spec should verify that:
+
   * the subject is correct
   * the receiver e-mail is correct
   * the e-mail is sent to the right e-mail address

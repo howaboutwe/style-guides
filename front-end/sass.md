@@ -72,7 +72,7 @@ What goes where?
 
 For example:
 
-````
+````scss
 .my-class {
   @include adjust-font-size-to($medium-font-size);
   @include border-radius(5px);
@@ -124,7 +124,7 @@ For example:
 * Use variables for repeated values within a file or class declaration
   * e.g. `_nav.scss`
 
-    ````
+    ````scss
       $nav_height: 50px;
       nav { height: $nav_height; }
       #main { margin-top: $nav_height*-1; }
@@ -173,7 +173,7 @@ SASS is code.  Use it as such where appropriate.
 * Placeholders, unlike mixins, take advantage of selector grouping to avoid duplicating code
 * To use a placeholder, extend it:
 
-    ````
+    ````scss
     %center {
         margin: 0 auto;
         padding: 10px 5px
@@ -192,9 +192,9 @@ Use `!important` proactively, not reactively.
 * Only when we know that we want a style to take precedence over all other variations should we use `!important`. 
     * For example, we might know that we **always** want an error message to appear red, regardless of text color of the module it appears in
 
-    ````
+    ````scss
       .error { color: #e32!important; }
     ````
-      
+
   * If we find we need to use `!important` to force an override of a style, however, we need to instead go back and reconsider how that styling was written.
 

@@ -217,6 +217,7 @@ You can generate a PDF or an HTML copy of this guide using
 
       puts "Done!"
     end
+    ```
 
 * Do not leave empty lines after a class definition or between `end`s
 
@@ -236,6 +237,7 @@ You can generate a PDF or an HTML copy of this guide using
         puts "Bar"
       end
     end
+    ```
 
 * Align the parameters of a method call if they span over multiple lines.
 
@@ -453,10 +455,12 @@ You can generate a PDF or an HTML copy of this guide using
     if x > 10
       # body omitted
     end
+    ```
 
   The one exception is when the condition contains an assignment, to
   signify intent:
 
+    ```Ruby
     # bad - should this have been a '=='?
     if x = self.next_value
       # body omitted
@@ -518,6 +522,7 @@ You can generate a PDF or an HTML copy of this guide using
 
     # good
     names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+    ```
 
 * Avoid `return` where not required.
 
@@ -615,6 +620,7 @@ You can generate a PDF or an HTML copy of this guide using
         end
       end
     end
+    ```
 
 * Use spaces around the `=` operator when assigning default values to method parameters:
 
@@ -668,7 +674,7 @@ You can generate a PDF or an HTML copy of this guide using
     ```
 
 * Don't use `||=` to initialize boolean variables. (Consider what
-would happen if the current value happened to be `false`.)
+  would happen if the current value happened to be `false`.)
 
     ```Ruby
     # bad - would set enabled to true even if it was false
@@ -690,10 +696,10 @@ would happen if the current value happened to be `false`.)
 
 * If the first argument to a method begins with an open parenthesis,
   always use parentheses in the method invocation. For example, write
-`f((3 + 2) + 1)`.
+  `f((3 + 2) + 1)`.
 
 * When the keys of your hash are symbols use the Ruby 1.9 hash literal
-syntax.
+  syntax.
 
     ```Ruby
     # bad
@@ -729,23 +735,23 @@ syntax.
 * Don't use short (1 or 2 char) variable names unless it's a parameter
   of a single-line block:
 
-  ```Ruby
-  # ok
-  open(path) { |f| puts f.line }
+    ```Ruby
+    # ok
+    open(path) { |f| puts f.line }
 
-  # also ok
-  open(path) { |file| puts file.line }
+    # also ok
+    open(path) { |file| puts file.line }
 
-  # bad
-  open(path) do |f|
-    # ...
-  end
+    # bad
+    open(path) do |f|
+      # ...
+    end
 
-  # good
-  open(path) do |file|
-    # ...
-  end
-  ```
+    # good
+    open(path) do |file|
+      # ...
+    end
+    ```
 
 * Never shorten names by simply omitting a few letters (e.g. `search`,
   not `srch`; `response`, not `res`).
@@ -770,8 +776,8 @@ syntax.
   (i.e. `Array#empty?` instead of `Array.is_empty?`)
 
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
-  arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an exclamation mark if
-  there exists a safe version of that *dangerous* method.
+  arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an
+  exclamation mark if there exists a safe version of that *dangerous* method.
 
     ```Ruby
     # bad - there is not matching 'safe' method
@@ -821,14 +827,14 @@ syntax.
   this case, the bang version should be defined in terms of the
   non-bang one:
 
-  ```Ruby
-  class Thing
-    def save!
-      save or
-        raise Invalid.new(self)
+    ```Ruby
+    class Thing
+      def save!
+        save or
+          raise Invalid.new(self)
+      end
     end
-  end
-  ```
+    ```
 
 * Avoid "flag" parameters - write a separate method or take an options
   hash instead.
@@ -910,7 +916,7 @@ syntax.
     ```
 
 * Keep existing comments up-to-date. Favor explanatory commit messages instead.
-An outdated comment is worse than no comment at all.
+  An outdated comment is worse than no comment at all.
 
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
@@ -979,7 +985,7 @@ An outdated comment is worse than no comment at all.
     ```
 
 * Use the `attr` family of functions to define trivial accessors or
-mutators.
+  mutators.
 
     ```Ruby
     # bad
@@ -1008,8 +1014,9 @@ mutators.
       end
     end
     ```
+
 * Consider using `Struct.new`, which defines the trivial accessors,
-constructor and comparison operators for you.
+  constructor and comparison operators for you.
 
     ```Ruby
     # good
@@ -1025,10 +1032,10 @@ constructor and comparison operators for you.
     # better
     Person = Struct.new(:first_name, :last_name) do
     end
-    ````
+    ```
 
 * Consider adding factory methods to provide additional sensible ways
-to create instances of a particular class.
+  to create instances of a particular class.
 
     ```Ruby
     class Person
@@ -1077,7 +1084,7 @@ to create instances of a particular class.
     ```
 
 * Avoid the usage of class (`@@`) variables due to their "nasty" behavior
-in inheritance.
+  in inheritance.
 
     ```Ruby
     class Parent
@@ -1100,9 +1107,9 @@ in inheritance.
     over class variables.
 
 * Assign proper visibility levels to methods (`private`, `protected`)
-in accordance with their intended usage. Don't go off leaving
-everything `public` (which is the default). After all we're coding
-in *Ruby* now, not in *Python*.
+  in accordance with their intended usage. Don't go off leaving
+  everything `public` (which is the default). After all we're coding
+  in *Ruby* now, not in *Python*.
 * Indent the `public`, `protected`, and `private` methods as much the
   method definitions they apply to. Leave one blank line above and below them.
 
@@ -1118,6 +1125,7 @@ in *Ruby* now, not in *Python*.
         # ...
       end
     end
+    ```
 
 * Use `def self.method` to define singleton methods. This makes the methods
   more resistant to refactoring changes.
@@ -1278,17 +1286,17 @@ in *Ruby* now, not in *Python*.
 * Never use the `rescue` statement modifier, as there is no way to
   specify which exception classes to rescue.
 
-  ```Ruby
-  # bad
-  do_something rescue nil
+    ```Ruby
+    # bad
+    do_something rescue nil
 
-  # good
-  begin
-    do_something
-  rescue SomeException
-    # ...
-  end
-  ```
+    # good
+    begin
+      do_something
+    rescue SomeException
+      # ...
+    end
+    ```
 
 * Put more specific exceptions higher up the rescue chain, otherwise
   they'll never be rescued from.
@@ -1314,7 +1322,7 @@ in *Ruby* now, not in *Python*.
     ```
 
 * Release external resources obtained by your program in an ensure
-block.
+  block.
 
     ```Ruby
     f = File.open('testfile')
@@ -1328,12 +1336,12 @@ block.
     ```
 
 * Favor the use of exceptions for the standard library over
-introducing new exception classes.
+  introducing new exception classes.
 
 ## Collections
 
 * Prefer literal array and hash creation notation (unless you need to
-pass parameters to their constructors, that is).
+  pass parameters to their constructors, that is).
 
     ```Ruby
     # bad
@@ -1368,7 +1376,7 @@ pass parameters to their constructors, that is).
 
 * Avoid the use of mutable object as hash keys.
 * Use the new 1.9 literal hash syntax in preference to the hashrocket
-syntax.
+  syntax.
 
     ```Ruby
     # bad
@@ -1434,7 +1442,7 @@ syntax.
   line numbers so backtraces make sense. Note that if a heredoc is
   used, the correct line number is `__LINE__ + 1`.
 
-    ```ruby
+    ```Ruby
     class_eval <<-EOS, __FILE__, __LINE__ + 1
       def #{method}
       end
@@ -1451,7 +1459,7 @@ syntax.
   * call `super` at the end
   * delegate to assertive, non-magical methods:
 
-    ```ruby
+    ```Ruby
     # bad
     def method_missing(meth, *args, &block)
       if method =~ /\Afind_by_(?<prop>.*)/
@@ -1498,6 +1506,7 @@ syntax.
 * Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
 * Don't use File.join to piece together file names from static strings.
+
     ```Ruby
     # bad
     path = File.join(Rails.root, 'config', 'blah.yml')
