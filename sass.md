@@ -72,7 +72,7 @@ Rules for where styles should go:
 
 For example:
 
-````
+````scss
 .my_class {
   @include adjust-font-size-to($medium-font-size);
   @include border-radius(5px);
@@ -130,7 +130,7 @@ In views:
 * Use variables for repeated values within a file or class declaration
   * for example: `_nav.scss`
 
-    ````
+    ````scss
       $nav_height: 50px;
       nav { height: $nav_height; }
       #main { margin-top: $nav_height*-1; }
@@ -210,7 +210,7 @@ and padding.
 
 BAD:
 
-````
+````scss
   :sass
     .cyan { color: $cyan; }        
 
@@ -220,7 +220,7 @@ BAD:
 
 GOOD: 
 
-````
+````scss
   :sass
     #offer.booking span { color: $cyan; }      
 
@@ -276,7 +276,7 @@ For example:
 
 Decorators can return object state or method based classes.  Use this as a way to move display differences exclusively into CSS 
 
-  ````
+  ````scss
     def price_classes
       classes = []
       classes << 'membersOnly' if members_only
@@ -287,17 +287,17 @@ Decorators can return object state or method based classes.  Use this as a way t
     end
   ````
 
-  ````
+  ````scss
   .offerCard{ class: offer.price_classes }
   ````
 
-  ````
+  ````scss
   .pricing{ class: offer.price_classes }
   ````
 
 Decorators can return computed html attributes nicely
 
-  ````
+  ````scss
   def booking_form_attributes
     attrs = {
       url: h.offer_booking_path(self, secure: true),
@@ -313,7 +313,7 @@ Decorators can return computed html attributes nicely
   end
   ````
 
-  ````
+  ````scss
   = form_for(@booking, offer.booking_form_attributes) do |f|
   ````
 
